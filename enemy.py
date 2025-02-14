@@ -1,6 +1,7 @@
 # 敌人类
 class Enemy:
-    def __init__(self, defense, level):
+    def __init__(self, name, defense, level):
+        self.name = name
         self.defense = defense
         self.level = level
 

@@ -1,12 +1,11 @@
 # 玩家类
 class Player:
-    def __init__(self, level, crit_rate, crit_damage, attack_power, hit_rate, special_resource):
+    def __init__(self, level, crit_rate, crit_damage, attack_power, hit_rate):
         self.level = level
         self.crit_rate = crit_rate
         self.crit_damage = crit_damage
         self.attack_power = attack_power
         self.hit_rate = hit_rate
-        self.special_resource = special_resource
         self.buffs = []
         self.skills = []
 
@@ -33,3 +32,11 @@ class Player:
             if buff.is_active(current_time):
                 total_damage = buff.apply(self, total_damage)
         return total_damage
+    
+
+class LingXi(Player):
+    def __init__(self, level, crit_rate, crit_damage, attack_power, hit_rate):
+        super().__init__(level, crit_rate, crit_damage, attack_power, hit_rate)
+        self.name = "灵灵汐"
+        self.lingyin = 0
+        self.lingyu = 0
