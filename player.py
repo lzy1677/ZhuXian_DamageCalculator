@@ -40,3 +40,12 @@ class LingXi(Player):
         self.name = "灵灵汐"
         self.lingyin = 0
         self.lingyu = 0
+        self.last_lingyin_time = -float('inf')
+        self.last_lingyu_time = -float('inf')
+        
+    def update(self, current_time):
+        super().update(current_time)
+        if current_time - self.last_lingyin_time >= 1 and self.lingyin <= 3:
+            self.lingyin += 1
+        if current_time - self.last_lingyu_time >= 1 and self.lingyu <= 4:
+            self.lingyu += 1
