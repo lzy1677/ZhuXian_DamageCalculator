@@ -1,3 +1,6 @@
+from utils import clock
+
+
 # 技能类
 class Skill:
     def __init__(self, name, cast_time, cooldown, damage_type):
@@ -13,9 +16,10 @@ class Skill:
     def is_ready(self, current_time):
         return current_time - self.last_used_time >= self.cooldown
 
-    def use(self, current_time):
+    def use(self, current_time, player):
         if self.is_ready(current_time):
             self.last_used_time = current_time
+            print(f"[{clock.get_format_time()}] {self.name} is used!")
             return True
         return False
 
