@@ -63,7 +63,9 @@ class Player:
 
     def calculate_damage(self, skill, enemy, current_time):
         base_damage = skill.calculate_base_damage(self, enemy)
-        total_damage = base_damage
+        total_damage = base_damage * self.attack_power  # 基础伤害乘以攻击力
+        if random.random() < self.crit_rate:
+            total_damage *= self.crit_damage  # 暴击伤害
         for buff in self.buffs:
             if buff.is_active(current_time):
                 total_damage = buff.apply(self, total_damage)
