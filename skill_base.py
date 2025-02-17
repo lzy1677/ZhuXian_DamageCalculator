@@ -16,15 +16,17 @@ class Skill:
     def is_ready(self, current_time):
         return current_time - self.last_used_time >= self.cooldown
 
-    def use(self, current_time, player):
-        if self.is_ready(current_time):
-            self.last_used_time = current_time
-            print(f"[{clock.get_format_time()}] {self.name} is used!")
-            return True
-        return False
-
     def update(self, current_time):
         pass  # 技能状态更新逻辑
+    
+    def use(self, player, current_time):
+        if self.is_ready(current_time):
+            self.last_used_time = current_time
+            base_damage = self.calculate_base_damage(player, enemy)
+            total_damage = player.calculate_damage(self, enemy, current_time)
+            print(f'使用技能[{self.name}]，造成伤害: {total_damage}')
+            # 其他逻辑，如施法动画、音效等
+        return False
 
 
 class DirectDamageSkill(Skill):
